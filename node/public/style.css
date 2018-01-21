@@ -1,0 +1,17 @@
+body {
+	max-width: 500px;
+	margin: auto;
+}
+
+.header {
+	text-align: center;
+}
+
+.header ul {
+	padding: 0;
+}
+
+.header ul li {
+	display: inline-block;
+	width: 50px;
+}

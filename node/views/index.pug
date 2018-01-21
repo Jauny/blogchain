@@ -1,0 +1,11 @@
+doctype html
+html
+	head
+		title Decentralized Blog Chain
+		link(rel='stylesheet' type='text/css' href='/style.css')
+	body
+		include header.pug
+
+		each post in posts
+			p
+				a(href='/post/' + post.id)= post.title

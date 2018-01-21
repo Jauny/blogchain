@@ -10,7 +10,9 @@
   "license": "ISC",
   "dependencies": {
     "ethereumjs-tx": "^1.3.3",
+    "express": "^4.16.2",
     "fs": "0.0.1-security",
+    "pug": "^2.0.0-rc.4",
     "solc": "^0.4.19",
     "web3": "^1.0.0-beta.27"
   }
