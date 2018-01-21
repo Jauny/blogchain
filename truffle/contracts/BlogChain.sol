@@ -11,6 +11,7 @@ contract BlogChain {
 	struct Post {
 		uint id;
 		address owner;
+		string title;
 		string content;
 		uint createdAt;
 	}
@@ -26,7 +27,7 @@ contract BlogChain {
 		owner = msg.sender;
 	}
 
-	function submitPost(string content) public {
+	function submitPost(string title, string content) public {
 		var postId = posts.length;
 		if (postId == 0) {
 			postId = 1;
@@ -34,6 +35,7 @@ contract BlogChain {
 		var post = posts[postId];
 		post.id = postId;
 		post.owner = msg.sender;
+		post.title = title;
 		post.content = content;
 		post.createdAt = now;
 
@@ -47,10 +49,6 @@ contract BlogChain {
 		require(post.owner == msg.sender);
 
 		post.content = content;
-	}
-
-	function getPost(uint id) public view returns (Post post) {
-		return postsById[id];
 	}
 
 	function getPostsByUser(address user) public view returns (Post[]) {
