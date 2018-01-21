@@ -28,10 +28,7 @@ contract BlogChain {
 	}
 
 	function addPost(string _title, string _content) public {
-		var postId = posts.length;
-		if (postId == 0) {
-			postId = 1;
-		}
+		var postId = posts.length + 1;
 		var post = Post(postId, msg.sender, _title, _content, now);
 
 		posts.push(post);
