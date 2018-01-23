@@ -1,6 +1,7 @@
 pragma solidity ^0.4.18;
 
 import "truffle/Assert.sol";
+import "truffle/DeployedAddresses.sol";
 import "../contracts/BlogChain.sol";
 
 contract TestBlogChain {
@@ -12,7 +13,7 @@ contract TestBlogChain {
 		uint createdAt;
 	}
 
-	BlogChain bc = new BlogChain();
+	BlogChain bc = BlogChain(DeployedAddresses.BlogChain());
 
 	function testGetPostCount() public {
 		Assert.equal(bc.getPostCount(), 0, "it returns correct posts count");
@@ -23,7 +24,7 @@ contract TestBlogChain {
 
 		Assert.equal(bc.getPostCount(), 1, "it saved the new post");
 
-		var (id, owner, title, content, createdAt) = bc.getPost(1);
+		var (id, owner, title, content, createdAt)= bc.getPost(1);
 		Assert.equal(uint(1), id, "post has correct id");
 		Assert.equal(address(this), owner, "post has correct owner");
 
