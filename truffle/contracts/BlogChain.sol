@@ -16,7 +16,7 @@ contract BlogChain {
 		uint createdAt;
 	}
 
-	Post[] posts; // All posts
+	Post[] public posts; // All posts
 	mapping(uint => Post) postsById; // All posts by id
 	mapping(address => uint[]) postsByUser; // Pointer to posts index created by this user
 
@@ -36,33 +36,33 @@ contract BlogChain {
 		postsByUser[post.owner].push(post.id);
 	}
 
-	function editPost(uint id, string content) public {
-		var post = postsById[id];
+	// function editPost(uint id, string content) public {
+	// 	var post = postsById[id];
 		
-		require(post.owner == msg.sender);
+	// 	require(post.owner == msg.sender);
 
-		post.content = content;
-	}
+	// 	post.content = content;
+	// }
 
 	function getPostCount() public view returns (uint) {
 		return posts.length;
 	}
 
-	function getPost(uint id) public view returns (uint, address, string, string, uint) {
-		var post = postsById[id];
+	// function getPost(uint id) public view returns (uint, address, string, string, uint) {
+	// 	var post = postsById[id];
 
-		return (post.id, post.owner, post.title, post.content, post.createdAt);
-	}
+	// 	return (post.id, post.owner, post.title, post.content, post.createdAt);
+	// }
 
-	function getPostCountForUser(address user) public view returns (uint) {
-		return postsByUser[user].length;
-	}
+	// function getPostCountForUser(address user) public view returns (uint) {
+	// 	return postsByUser[user].length;
+	// }
 
-	function getPostOfUser(address user, uint index) public view returns (uint, address, string, string, uint) {
-		require(postsByUser[user].length > 0);
-		require(index < postsByUser[user].length);
+	// function getPostOfUser(address user, uint index) public view returns (uint, address, string, string, uint) {
+	// 	require(postsByUser[user].length > 0);
+	// 	require(index < postsByUser[user].length);
 
-		var postId = postsByUser[user][index];
-		return getPost(postId);
-	}
+	// 	var postId = postsByUser[user][index];
+	// 	return getPost(postId);
+	// }
 }

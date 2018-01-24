@@ -7,5 +7,5 @@ html
 		include header.pug
 
 		each post in posts
-			p
-				a(href='/post/' + post.id)= post.title
+			p.
+				#[a(href='/post/' + post.id) #{post.title}] by #{post.owner}
